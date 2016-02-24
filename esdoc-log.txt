@@ -1,0 +1,3330 @@
+ ------ onStart ev.data.option ------ 
+ undefined
+ ------ onHandleConfig ev.data.config ------ 
+ { source: './app',
+  destination: './doc',
+  plugins: [ { name: 'esdoc-es7-plugin' }, { name: './my-plugin.js' } ] }
+ ------ onHandleCode ev.data.code ------ 
+ import React from 'react';
+import { Link } from 'react-router'
+
+class App extends React.Component {
+  render() {
+    return (
+        <div>
+        	<h1>Hello World!</h1>
+            {this.props.children}
+           	<ul role="nav">
+	            <li><Link to="/one" activeStyle={{ color: 'red' }}>One</Link></li>
+	            <li><Link to="/one/bar" activeStyle={{ color: 'red' }}>One/bar</Link></li>
+	            <li><Link to="/two" activeStyle={{ color: 'red' }}>Two</Link></li>
+	            <li><Link to="/two/bar" activeStyle={{ color: 'red' }}>Two/bar</Link></li>
+	        </ul>
+        </div>
+    );
+  }
+
+  /**
+   * @ignore
+   */ 
+  something() {}
+
+  somethingElse() {}
+};
+
+/**
+ * protoTypes
+ */
+App.propTypes =  {
+  optionalArray: React.PropTypes.array,
+  optionalBool: React.PropTypes.bool,
+  optionalFunc: React.PropTypes.func,
+  optionalNumber: React.PropTypes.number,
+  optionalObject: React.PropTypes.object,
+  optionalString: React.PropTypes.string
+};
+
+export default App;
+ ------ onHandleCodeParser ------ 
+ function parser(code) {
+  var options = {
+    allowHashBang: true,
+    sourceType: 'module',
+    ecmaVersion: Infinity,
+    features: {
+      // stage 0
+      'es7.comprehensions': true,
+      'es7.classProperties': true,
+      'es7.functionBind': true,
+
+      // stage 1
+      'es7.asyncFunctions': true,
+      'es7.decorators': true,
+      'es7.exportExtensions': true,
+      'es7.objectRestSpread': true,
+      'es7.trailingFunctionCommas': true,
+
+      // stage 2
+      'es7.exponentiationOperator': true
+    },
+    plugins: {
+      jsx: true,
+      flow: true
+    }
+  };
+
+  var babylonAST = babylon.parse(code, options);
+  var ast = babylonAST.program;
+  patchBabylonAST(ast);
+  return ast;
+}
+ ------ onHandleAST ev.data.ast ------ 
+ { type: 'Program',
+  start: 0,
+  end: 985,
+  loc: { start: { line: 1, column: 0 }, end: { line: 40, column: 19 } },
+  sourceType: 'module',
+  body: 
+   [ { type: 'ImportDeclaration',
+       start: 0,
+       end: 26,
+       loc: [Object],
+       specifiers: [Object],
+       importKind: 'value',
+       source: [Object] },
+     { type: 'ImportDeclaration',
+       start: 27,
+       end: 62,
+       loc: [Object],
+       specifiers: [Object],
+       importKind: 'value',
+       source: [Object] },
+     { type: 'ClassDeclaration',
+       start: 64,
+       end: 677,
+       loc: [Object],
+       id: [Object],
+       superClass: [Object],
+       body: [Object] },
+     { type: 'EmptyStatement',
+       start: 677,
+       end: 678,
+       loc: [Object],
+       leadingComments: null,
+       trailingComments: [Object] },
+     { type: 'ExpressionStatement',
+       start: 702,
+       end: 964,
+       loc: [Object],
+       expression: [Object],
+       leadingComments: [Object] },
+     { type: 'ExportDefaultDeclaration',
+       start: 966,
+       end: 985,
+       loc: [Object],
+       declaration: [Object] } ] }
+ ------ onHandleCode ev.data.code ------ 
+ import React from 'react';
+import Intl from 'intl';
+
+class One extends React.Component {
+    render() {
+        const foo = (this.props.params && this.props.params.foo) ? `(${this.props.params.foo})` : null;
+        return (
+            <div>
+                One { foo }
+            </div>
+        );
+    }
+};
+
+One.propTypes =  {
+};
+
+export default One;
+ ------ onHandleCodeParser ------ 
+ function parser(code) {
+  var options = {
+    allowHashBang: true,
+    sourceType: 'module',
+    ecmaVersion: Infinity,
+    features: {
+      // stage 0
+      'es7.comprehensions': true,
+      'es7.classProperties': true,
+      'es7.functionBind': true,
+
+      // stage 1
+      'es7.asyncFunctions': true,
+      'es7.decorators': true,
+      'es7.exportExtensions': true,
+      'es7.objectRestSpread': true,
+      'es7.trailingFunctionCommas': true,
+
+      // stage 2
+      'es7.exponentiationOperator': true
+    },
+    plugins: {
+      jsx: true,
+      flow: true
+    }
+  };
+
+  var babylonAST = babylon.parse(code, options);
+  var ast = babylonAST.program;
+  patchBabylonAST(ast);
+  return ast;
+}
+ ------ onHandleAST ev.data.ast ------ 
+ { type: 'Program',
+  start: 0,
+  end: 353,
+  loc: { start: { line: 1, column: 0 }, end: { line: 18, column: 19 } },
+  sourceType: 'module',
+  body: 
+   [ { type: 'ImportDeclaration',
+       start: 0,
+       end: 26,
+       loc: [Object],
+       specifiers: [Object],
+       importKind: 'value',
+       source: [Object] },
+     { type: 'ImportDeclaration',
+       start: 27,
+       end: 51,
+       loc: [Object],
+       specifiers: [Object],
+       importKind: 'value',
+       source: [Object] },
+     { type: 'ClassDeclaration',
+       start: 53,
+       end: 308,
+       loc: [Object],
+       id: [Object],
+       superClass: [Object],
+       body: [Object] },
+     { type: 'EmptyStatement', start: 308, end: 309, loc: [Object] },
+     { type: 'ExpressionStatement',
+       start: 311,
+       end: 332,
+       loc: [Object],
+       expression: [Object] },
+     { type: 'ExportDefaultDeclaration',
+       start: 334,
+       end: 353,
+       loc: [Object],
+       declaration: [Object] } ] }
+ ------ onHandleCode ev.data.code ------ 
+ import React from 'react';
+import Intl from 'intl';
+
+class Two extends React.Component {
+    render() {
+        const foo = (this.props.params && this.props.params.foo) ? `(${this.props.params.foo})` : null;
+        return (
+            <div>
+                Two { foo }
+            </div>
+        );
+    }
+};
+
+Two.propTypes =  {
+};
+
+export default Two;
+ ------ onHandleCodeParser ------ 
+ function parser(code) {
+  var options = {
+    allowHashBang: true,
+    sourceType: 'module',
+    ecmaVersion: Infinity,
+    features: {
+      // stage 0
+      'es7.comprehensions': true,
+      'es7.classProperties': true,
+      'es7.functionBind': true,
+
+      // stage 1
+      'es7.asyncFunctions': true,
+      'es7.decorators': true,
+      'es7.exportExtensions': true,
+      'es7.objectRestSpread': true,
+      'es7.trailingFunctionCommas': true,
+
+      // stage 2
+      'es7.exponentiationOperator': true
+    },
+    plugins: {
+      jsx: true,
+      flow: true
+    }
+  };
+
+  var babylonAST = babylon.parse(code, options);
+  var ast = babylonAST.program;
+  patchBabylonAST(ast);
+  return ast;
+}
+ ------ onHandleAST ev.data.ast ------ 
+ { type: 'Program',
+  start: 0,
+  end: 353,
+  loc: { start: { line: 1, column: 0 }, end: { line: 18, column: 19 } },
+  sourceType: 'module',
+  body: 
+   [ { type: 'ImportDeclaration',
+       start: 0,
+       end: 26,
+       loc: [Object],
+       specifiers: [Object],
+       importKind: 'value',
+       source: [Object] },
+     { type: 'ImportDeclaration',
+       start: 27,
+       end: 51,
+       loc: [Object],
+       specifiers: [Object],
+       importKind: 'value',
+       source: [Object] },
+     { type: 'ClassDeclaration',
+       start: 53,
+       end: 308,
+       loc: [Object],
+       id: [Object],
+       superClass: [Object],
+       body: [Object] },
+     { type: 'EmptyStatement', start: 308, end: 309, loc: [Object] },
+     { type: 'ExpressionStatement',
+       start: 311,
+       end: 332,
+       loc: [Object],
+       expression: [Object] },
+     { type: 'ExportDefaultDeclaration',
+       start: 334,
+       end: 353,
+       loc: [Object],
+       declaration: [Object] } ] }
+ ------ onHandleCode ev.data.code ------ 
+ import React from 'react';
+import ReactDOM from 'react-dom';
+//import { Router, Route, hashHistory } from 'react-router'
+import Router from 'react-router/lib/Router';
+import Route from 'react-router/lib/Route';
+import hashHistory from 'react-router/lib/hashHistory';
+import App from './App';
+//import One from './One';
+//import Two from './Two';
+
+ReactDOM.render(
+    
+    <Router history={hashHistory}>
+        <Route path="/" component={App}>
+            <Route path="/one" getComponent={ loadComponentOne }/>
+            <Route path="/two" getComponent={ loadComponentTwo }/>
+            <Route path="/one/:foo" getComponent={ loadComponentOne }/>
+            <Route path="/two/:foo" getComponent={ loadComponentTwo }/>
+        </Route>
+    </Router>,
+    document.getElementById("app")
+);
+
+function loadComponentOne(location, cb) {
+    require.ensure(
+        ['./One'],
+        (require) => {
+            const One = require('./One');
+            cb(null, One.default);
+        },
+        'One'
+    );
+}
+
+function loadComponentTwo(location, cb) {
+    require.ensure(
+        ['./Two'],
+        (require) => {
+            const Two = require('./Two');
+            cb(null, Two.default);
+        },
+        'Two'
+    );
+}
+
+
+
+//getComponent=
+// require.ensure(dependencies, callback)
+
+ ------ onHandleCodeParser ------ 
+ function parser(code) {
+  var options = {
+    allowHashBang: true,
+    sourceType: 'module',
+    ecmaVersion: Infinity,
+    features: {
+      // stage 0
+      'es7.comprehensions': true,
+      'es7.classProperties': true,
+      'es7.functionBind': true,
+
+      // stage 1
+      'es7.asyncFunctions': true,
+      'es7.decorators': true,
+      'es7.exportExtensions': true,
+      'es7.objectRestSpread': true,
+      'es7.trailingFunctionCommas': true,
+
+      // stage 2
+      'es7.exponentiationOperator': true
+    },
+    plugins: {
+      jsx: true,
+      flow: true
+    }
+  };
+
+  var babylonAST = babylon.parse(code, options);
+  var ast = babylonAST.program;
+  patchBabylonAST(ast);
+  return ast;
+}
+ ------ onHandleAST ev.data.ast ------ 
+ { type: 'Program',
+  start: 0,
+  end: 1286,
+  loc: { start: { line: 1, column: 0 }, end: { line: 50, column: 0 } },
+  sourceType: 'module',
+  body: 
+   [ { type: 'ImportDeclaration',
+       start: 0,
+       end: 26,
+       loc: [Object],
+       specifiers: [Object],
+       importKind: 'value',
+       source: [Object] },
+     { type: 'ImportDeclaration',
+       start: 27,
+       end: 60,
+       loc: [Object],
+       specifiers: [Object],
+       importKind: 'value',
+       source: [Object],
+       trailingComments: [Object] },
+     { type: 'ImportDeclaration',
+       start: 121,
+       end: 166,
+       loc: [Object],
+       specifiers: [Object],
+       importKind: 'value',
+       source: [Object],
+       leadingComments: [Object] },
+     { type: 'ImportDeclaration',
+       start: 167,
+       end: 210,
+       loc: [Object],
+       specifiers: [Object],
+       importKind: 'value',
+       source: [Object] },
+     { type: 'ImportDeclaration',
+       start: 211,
+       end: 266,
+       loc: [Object],
+       specifiers: [Object],
+       importKind: 'value',
+       source: [Object] },
+     { type: 'ImportDeclaration',
+       start: 267,
+       end: 291,
+       loc: [Object],
+       specifiers: [Object],
+       importKind: 'value',
+       source: [Object],
+       trailingComments: [Object] },
+     { type: 'ExpressionStatement',
+       start: 347,
+       end: 792,
+       loc: [Object],
+       expression: [Object],
+       leadingComments: [Object] },
+     { type: 'FunctionDeclaration',
+       start: 794,
+       end: 1008,
+       loc: [Object],
+       id: [Object],
+       generator: false,
+       expression: false,
+       async: false,
+       params: [Object],
+       body: [Object] },
+     { type: 'FunctionDeclaration',
+       start: 1010,
+       end: 1224,
+       loc: [Object],
+       id: [Object],
+       generator: false,
+       expression: false,
+       async: false,
+       params: [Object],
+       body: [Object],
+       trailingComments: [Object] } ] }
+ ------ onHandleCode ev.data.code ------ 
+ "use strict";
+
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
+
+// Value properties
+/**
+ * @external {Infinity} https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity
+ */
+
+/**
+ * @external {NaN} https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN
+ */
+
+/**
+ * @external {undefined} https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined
+ */
+
+/**
+ * @external {null} https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null
+ */
+
+// Fundamental objects
+/**
+ * @external {Object} https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object
+ */
+/**
+ * @external {object} https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object
+ */
+
+/**
+ * @external {Function} https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function
+ */
+/**
+ * @external {function} https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function
+ */
+
+/**
+ * @external {Boolean} https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+ */
+/**
+ * @external {boolean} https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+ */
+
+/**
+ * @external {Symbol} https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol
+ */
+
+/**
+ * @external {Error} https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error
+ */
+
+/**
+ * @external {EvalError} https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/EvalError
+ */
+
+/**
+ * @external {InternalError} https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/InternalError
+ */
+
+/**
+ * @external {RangeError} https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError
+ */
+
+/**
+ * @external {ReferenceError} https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError
+ */
+
+/**
+ * @external {SyntaxError} https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError
+ */
+
+/**
+ * @external {TypeError} https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError
+ */
+
+/**
+ * @external {URIError} https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/URIError
+ */
+
+// Numbers and dates
+/**
+ * @external {Number} https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number
+ */
+/**
+ * @external {number} https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number
+ */
+
+/**
+ * @external {Date} https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
+ */
+
+// Text processing
+/**
+ * @external {String} https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
+ */
+/**
+ * @external {string} https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
+ */
+
+/**
+ * @external {RegExp} https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp
+ */
+
+// Indexed collections
+/**
+ * @external {Array} https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
+ */
+
+/**
+ * @external {Int8Array} https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int8Array
+ */
+/**
+ * @external {Uint8Array} https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array
+ */
+
+/**
+ * @external {Uint8ClampedArray} https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray
+ */
+
+/**
+ * @external {Int16Array} https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int16Array
+ */
+
+/**
+ * @external {Uint16Array} https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint16Array
+ */
+
+/**
+ * @external {Int32Array} https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array
+ */
+
+/**
+ * @external {Uint32Array} https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array
+ */
+
+/**
+ * @external {Float32Array} https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array
+ */
+
+/**
+ * @external {Float64Array} https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float64Array
+ */
+
+// Keyed collections
+/**
+ * @external {Map} https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map
+ */
+
+/**
+ * @external {Set} https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set
+ */
+
+/**
+ * @external {WeakMap} https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap
+ */
+
+/**
+ * @external {WeakSet} https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet
+ */
+
+// Structured data
+/**
+ * @external {ArrayBuffer} https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer
+ */
+
+/**
+ * @external {DataView} https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView
+ */
+
+/**
+ * @external {JSON} https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON
+ */
+
+// Control abstraction objects
+/**
+ * @external {Promise} https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
+ */
+
+/**
+ * @external {Generator} https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator
+ */
+
+/**
+ * @external {GeneratorFunction} https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/GeneratorFunction
+ */
+
+// Reflection
+/**
+ * @external {Reflect} https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect
+ */
+
+/**
+ * @external {Proxy} https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy
+ */
+ ------ onHandleCodeParser ------ 
+ function parser(code) {
+  var options = {
+    allowHashBang: true,
+    sourceType: 'module',
+    ecmaVersion: Infinity,
+    features: {
+      // stage 0
+      'es7.comprehensions': true,
+      'es7.classProperties': true,
+      'es7.functionBind': true,
+
+      // stage 1
+      'es7.asyncFunctions': true,
+      'es7.decorators': true,
+      'es7.exportExtensions': true,
+      'es7.objectRestSpread': true,
+      'es7.trailingFunctionCommas': true,
+
+      // stage 2
+      'es7.exponentiationOperator': true
+    },
+    plugins: {
+      jsx: true,
+      flow: true
+    }
+  };
+
+  var babylonAST = babylon.parse(code, options);
+  var ast = babylonAST.program;
+  patchBabylonAST(ast);
+  return ast;
+}
+ ------ onHandleAST ev.data.ast ------ 
+ { type: 'Program',
+  start: 0,
+  end: 6072,
+  loc: { start: { line: 1, column: 0 }, end: { line: 194, column: 3 } },
+  sourceType: 'module',
+  body: 
+   [ { type: 'ExpressionStatement',
+       start: 0,
+       end: 13,
+       loc: [Object],
+       expression: [Object],
+       trailingComments: [Object] } ] }
+ ------ onHandleCode ev.data.code ------ 
+ "use strict";
+
+// https://developer.mozilla.org/en-US/docs/Web/API
+
+/**
+ * @external {CanvasRenderingContext2D} https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D
+ */
+
+/**
+ * @external {DocumentFragment} https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment
+ */
+
+/**
+ * @external {Element} https://developer.mozilla.org/en-US/docs/Web/API/Element
+ */
+
+/**
+ * @external {Event} https://developer.mozilla.org/en-US/docs/Web/API/Event
+ */
+
+/**
+ * @external {Node} https://developer.mozilla.org/en-US/docs/Web/API/Node
+ */
+
+/**
+ * @external {NodeList} https://developer.mozilla.org/en-US/docs/Web/API/NodeList
+ */
+
+/**
+ * @external {XMLHttpRequest} https://developer.mozilla.org/en/docs/Web/API/XMLHttpRequest
+ */
+
+/**
+* @external {AudioContext} https://developer.mozilla.org/en/docs/Web/API/AudioContext
+*/
+ ------ onHandleCodeParser ------ 
+ function parser(code) {
+  var options = {
+    allowHashBang: true,
+    sourceType: 'module',
+    ecmaVersion: Infinity,
+    features: {
+      // stage 0
+      'es7.comprehensions': true,
+      'es7.classProperties': true,
+      'es7.functionBind': true,
+
+      // stage 1
+      'es7.asyncFunctions': true,
+      'es7.decorators': true,
+      'es7.exportExtensions': true,
+      'es7.objectRestSpread': true,
+      'es7.trailingFunctionCommas': true,
+
+      // stage 2
+      'es7.exponentiationOperator': true
+    },
+    plugins: {
+      jsx: true,
+      flow: true
+    }
+  };
+
+  var babylonAST = babylon.parse(code, options);
+  var ast = babylonAST.program;
+  patchBabylonAST(ast);
+  return ast;
+}
+ ------ onHandleAST ev.data.ast ------ 
+ { type: 'Program',
+  start: 0,
+  end: 838,
+  loc: { start: { line: 1, column: 0 }, end: { line: 35, column: 2 } },
+  sourceType: 'module',
+  body: 
+   [ { type: 'ExpressionStatement',
+       start: 0,
+       end: 13,
+       loc: [Object],
+       expression: [Object],
+       trailingComments: [Object] } ] }
+ ------ onHandleTag ev.data.tag ------ 
+ [ { __docId__: 0,
+    kind: 'file',
+    static: true,
+    variation: null,
+    name: 'app/App.js',
+    memberof: null,
+    longname: 'app/App.js',
+    access: null,
+    description: null,
+    lineNumber: 1,
+    content: 'import React from \'react\';\nimport { Link } from \'react-router\'\n\nclass App extends React.Component {\n  render() {\n    return (\n        <div>\n        \t<h1>Hello World!</h1>\n            {this.props.children}\n           \t<ul role="nav">\n\t            <li><Link to="/one" activeStyle={{ color: \'red\' }}>One</Link></li>\n\t            <li><Link to="/one/bar" activeStyle={{ color: \'red\' }}>One/bar</Link></li>\n\t            <li><Link to="/two" activeStyle={{ color: \'red\' }}>Two</Link></li>\n\t            <li><Link to="/two/bar" activeStyle={{ color: \'red\' }}>Two/bar</Link></li>\n\t        </ul>\n        </div>\n    );\n  }\n\n  /**\n   * @ignore\n   */ \n  something() {}\n\n  somethingElse() {}\n};\n\n/**\n * protoTypes\n */\nApp.propTypes =  {\n  optionalArray: React.PropTypes.array,\n  optionalBool: React.PropTypes.bool,\n  optionalFunc: React.PropTypes.func,\n  optionalNumber: React.PropTypes.number,\n  optionalObject: React.PropTypes.object,\n  optionalString: React.PropTypes.string\n};\n\nexport default App;' },
+  { __docId__: 1,
+    kind: 'class',
+    static: true,
+    variation: null,
+    name: 'App',
+    memberof: 'app/App.js',
+    longname: 'app/App.js~App',
+    access: null,
+    export: true,
+    importPath: 'forkpipe/app/App.js',
+    importStyle: 'App',
+    description: null,
+    lineNumber: 4,
+    undocument: true,
+    interface: false,
+    extends: [ 'react~React.Component' ] },
+  { __docId__: 2,
+    kind: 'method',
+    static: false,
+    variation: null,
+    name: 'render',
+    memberof: 'app/App.js~App',
+    longname: 'app/App.js~App#render',
+    access: null,
+    description: null,
+    lineNumber: 5,
+    undocument: true,
+    params: [],
+    return: { types: [Object] },
+    generator: false },
+  { __docId__: 3,
+    kind: 'method',
+    static: false,
+    variation: null,
+    name: 'something',
+    memberof: 'app/App.js~App',
+    longname: 'app/App.js~App#something',
+    access: null,
+    description: '',
+    lineNumber: 23,
+    ignore: true,
+    params: [],
+    generator: false },
+  { __docId__: 4,
+    kind: 'method',
+    static: false,
+    variation: null,
+    name: 'somethingElse',
+    memberof: 'app/App.js~App',
+    longname: 'app/App.js~App#somethingElse',
+    access: null,
+    description: null,
+    lineNumber: 25,
+    undocument: true,
+    params: [],
+    generator: false },
+  { __docId__: 5,
+    kind: 'file',
+    static: true,
+    variation: null,
+    name: 'app/One.js',
+    memberof: null,
+    longname: 'app/One.js',
+    access: null,
+    description: null,
+    lineNumber: 1,
+    content: 'import React from \'react\';\nimport Intl from \'intl\';\n\nclass One extends React.Component {\n    render() {\n        const foo = (this.props.params && this.props.params.foo) ? `(${this.props.params.foo})` : null;\n        return (\n            <div>\n                One { foo }\n            </div>\n        );\n    }\n};\n\nOne.propTypes =  {\n};\n\nexport default One;' },
+  { __docId__: 6,
+    kind: 'class',
+    static: true,
+    variation: null,
+    name: 'One',
+    memberof: 'app/One.js',
+    longname: 'app/One.js~One',
+    access: null,
+    export: true,
+    importPath: 'forkpipe/app/One.js',
+    importStyle: 'One',
+    description: null,
+    lineNumber: 4,
+    undocument: true,
+    interface: false,
+    extends: [ 'react~React.Component' ] },
+  { __docId__: 7,
+    kind: 'method',
+    static: false,
+    variation: null,
+    name: 'render',
+    memberof: 'app/One.js~One',
+    longname: 'app/One.js~One#render',
+    access: null,
+    description: null,
+    lineNumber: 5,
+    undocument: true,
+    params: [],
+    return: { types: [Object] },
+    generator: false },
+  { __docId__: 8,
+    kind: 'file',
+    static: true,
+    variation: null,
+    name: 'app/Two.js',
+    memberof: null,
+    longname: 'app/Two.js',
+    access: null,
+    description: null,
+    lineNumber: 1,
+    content: 'import React from \'react\';\nimport Intl from \'intl\';\n\nclass Two extends React.Component {\n    render() {\n        const foo = (this.props.params && this.props.params.foo) ? `(${this.props.params.foo})` : null;\n        return (\n            <div>\n                Two { foo }\n            </div>\n        );\n    }\n};\n\nTwo.propTypes =  {\n};\n\nexport default Two;' },
+  { __docId__: 9,
+    kind: 'class',
+    static: true,
+    variation: null,
+    name: 'Two',
+    memberof: 'app/Two.js',
+    longname: 'app/Two.js~Two',
+    access: null,
+    export: true,
+    importPath: 'forkpipe/app/Two.js',
+    importStyle: 'Two',
+    description: null,
+    lineNumber: 4,
+    undocument: true,
+    interface: false,
+    extends: [ 'react~React.Component' ] },
+  { __docId__: 10,
+    kind: 'method',
+    static: false,
+    variation: null,
+    name: 'render',
+    memberof: 'app/Two.js~Two',
+    longname: 'app/Two.js~Two#render',
+    access: null,
+    description: null,
+    lineNumber: 5,
+    undocument: true,
+    params: [],
+    return: { types: [Object] },
+    generator: false },
+  { __docId__: 11,
+    kind: 'file',
+    static: true,
+    variation: null,
+    name: 'app/main.js',
+    memberof: null,
+    longname: 'app/main.js',
+    access: null,
+    description: null,
+    lineNumber: 1,
+    content: 'import React from \'react\';\nimport ReactDOM from \'react-dom\';\n//import { Router, Route, hashHistory } from \'react-router\'\nimport Router from \'react-router/lib/Router\';\nimport Route from \'react-router/lib/Route\';\nimport hashHistory from \'react-router/lib/hashHistory\';\nimport App from \'./App\';\n//import One from \'./One\';\n//import Two from \'./Two\';\n\nReactDOM.render(\n    \n    <Router history={hashHistory}>\n        <Route path="/" component={App}>\n            <Route path="/one" getComponent={ loadComponentOne }/>\n            <Route path="/two" getComponent={ loadComponentTwo }/>\n            <Route path="/one/:foo" getComponent={ loadComponentOne }/>\n            <Route path="/two/:foo" getComponent={ loadComponentTwo }/>\n        </Route>\n    </Router>,\n    document.getElementById("app")\n);\n\nfunction loadComponentOne(location, cb) {\n    require.ensure(\n        [\'./One\'],\n        (require) => {\n            const One = require(\'./One\');\n            cb(null, One.default);\n        },\n        \'One\'\n    );\n}\n\nfunction loadComponentTwo(location, cb) {\n    require.ensure(\n        [\'./Two\'],\n        (require) => {\n            const Two = require(\'./Two\');\n            cb(null, Two.default);\n        },\n        \'Two\'\n    );\n}\n\n\n\n//getComponent=\n// require.ensure(dependencies, callback)\n' },
+  { __docId__: 12,
+    kind: 'function',
+    static: true,
+    variation: null,
+    name: 'loadComponentOne',
+    memberof: 'app/main.js',
+    longname: 'app/main.js~loadComponentOne',
+    access: null,
+    export: false,
+    importPath: 'forkpipe/app/main.js',
+    importStyle: null,
+    description: null,
+    lineNumber: 24,
+    undocument: true,
+    params: [ [Object], [Object] ],
+    generator: false },
+  { __docId__: 13,
+    kind: 'function',
+    static: true,
+    variation: null,
+    name: 'loadComponentTwo',
+    memberof: 'app/main.js',
+    longname: 'app/main.js~loadComponentTwo',
+    access: null,
+    export: false,
+    importPath: 'forkpipe/app/main.js',
+    importStyle: null,
+    description: null,
+    lineNumber: 35,
+    undocument: true,
+    params: [ [Object], [Object] ],
+    generator: false },
+  { __docId__: 15,
+    kind: 'external',
+    static: true,
+    variation: null,
+    name: 'Infinity',
+    externalLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity',
+    memberof: 'BuiltinExternal/ECMAScriptExternal.js',
+    longname: 'BuiltinExternal/ECMAScriptExternal.js~Infinity',
+    access: null,
+    description: '',
+    builtinExternal: true },
+  { __docId__: 16,
+    kind: 'external',
+    static: true,
+    variation: null,
+    name: 'NaN',
+    externalLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN',
+    memberof: 'BuiltinExternal/ECMAScriptExternal.js',
+    longname: 'BuiltinExternal/ECMAScriptExternal.js~NaN',
+    access: null,
+    description: '',
+    builtinExternal: true },
+  { __docId__: 17,
+    kind: 'external',
+    static: true,
+    variation: null,
+    name: 'undefined',
+    externalLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined',
+    memberof: 'BuiltinExternal/ECMAScriptExternal.js',
+    longname: 'BuiltinExternal/ECMAScriptExternal.js~undefined',
+    access: null,
+    description: '',
+    builtinExternal: true },
+  { __docId__: 18,
+    kind: 'external',
+    static: true,
+    variation: null,
+    name: 'null',
+    externalLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null',
+    memberof: 'BuiltinExternal/ECMAScriptExternal.js',
+    longname: 'BuiltinExternal/ECMAScriptExternal.js~null',
+    access: null,
+    description: '',
+    builtinExternal: true },
+  { __docId__: 19,
+    kind: 'external',
+    static: true,
+    variation: null,
+    name: 'Object',
+    externalLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object',
+    memberof: 'BuiltinExternal/ECMAScriptExternal.js',
+    longname: 'BuiltinExternal/ECMAScriptExternal.js~Object',
+    access: null,
+    description: '',
+    builtinExternal: true },
+  { __docId__: 20,
+    kind: 'external',
+    static: true,
+    variation: null,
+    name: 'object',
+    externalLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object',
+    memberof: 'BuiltinExternal/ECMAScriptExternal.js',
+    longname: 'BuiltinExternal/ECMAScriptExternal.js~object',
+    access: null,
+    description: '',
+    builtinExternal: true },
+  { __docId__: 21,
+    kind: 'external',
+    static: true,
+    variation: null,
+    name: 'Function',
+    externalLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function',
+    memberof: 'BuiltinExternal/ECMAScriptExternal.js',
+    longname: 'BuiltinExternal/ECMAScriptExternal.js~Function',
+    access: null,
+    description: '',
+    builtinExternal: true },
+  { __docId__: 22,
+    kind: 'external',
+    static: true,
+    variation: null,
+    name: 'function',
+    externalLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function',
+    memberof: 'BuiltinExternal/ECMAScriptExternal.js',
+    longname: 'BuiltinExternal/ECMAScriptExternal.js~function',
+    access: null,
+    description: '',
+    builtinExternal: true },
+  { __docId__: 23,
+    kind: 'external',
+    static: true,
+    variation: null,
+    name: 'Boolean',
+    externalLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean',
+    memberof: 'BuiltinExternal/ECMAScriptExternal.js',
+    longname: 'BuiltinExternal/ECMAScriptExternal.js~Boolean',
+    access: null,
+    description: '',
+    builtinExternal: true },
+  { __docId__: 24,
+    kind: 'external',
+    static: true,
+    variation: null,
+    name: 'boolean',
+    externalLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean',
+    memberof: 'BuiltinExternal/ECMAScriptExternal.js',
+    longname: 'BuiltinExternal/ECMAScriptExternal.js~boolean',
+    access: null,
+    description: '',
+    builtinExternal: true },
+  { __docId__: 25,
+    kind: 'external',
+    static: true,
+    variation: null,
+    name: 'Symbol',
+    externalLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol',
+    memberof: 'BuiltinExternal/ECMAScriptExternal.js',
+    longname: 'BuiltinExternal/ECMAScriptExternal.js~Symbol',
+    access: null,
+    description: '',
+    builtinExternal: true },
+  { __docId__: 26,
+    kind: 'external',
+    static: true,
+    variation: null,
+    name: 'Error',
+    externalLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error',
+    memberof: 'BuiltinExternal/ECMAScriptExternal.js',
+    longname: 'BuiltinExternal/ECMAScriptExternal.js~Error',
+    access: null,
+    description: '',
+    builtinExternal: true },
+  { __docId__: 27,
+    kind: 'external',
+    static: true,
+    variation: null,
+    name: 'EvalError',
+    externalLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/EvalError',
+    memberof: 'BuiltinExternal/ECMAScriptExternal.js',
+    longname: 'BuiltinExternal/ECMAScriptExternal.js~EvalError',
+    access: null,
+    description: '',
+    builtinExternal: true },
+  { __docId__: 28,
+    kind: 'external',
+    static: true,
+    variation: null,
+    name: 'InternalError',
+    externalLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/InternalError',
+    memberof: 'BuiltinExternal/ECMAScriptExternal.js',
+    longname: 'BuiltinExternal/ECMAScriptExternal.js~InternalError',
+    access: null,
+    description: '',
+    builtinExternal: true },
+  { __docId__: 29,
+    kind: 'external',
+    static: true,
+    variation: null,
+    name: 'RangeError',
+    externalLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError',
+    memberof: 'BuiltinExternal/ECMAScriptExternal.js',
+    longname: 'BuiltinExternal/ECMAScriptExternal.js~RangeError',
+    access: null,
+    description: '',
+    builtinExternal: true },
+  { __docId__: 30,
+    kind: 'external',
+    static: true,
+    variation: null,
+    name: 'ReferenceError',
+    externalLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError',
+    memberof: 'BuiltinExternal/ECMAScriptExternal.js',
+    longname: 'BuiltinExternal/ECMAScriptExternal.js~ReferenceError',
+    access: null,
+    description: '',
+    builtinExternal: true },
+  { __docId__: 31,
+    kind: 'external',
+    static: true,
+    variation: null,
+    name: 'SyntaxError',
+    externalLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError',
+    memberof: 'BuiltinExternal/ECMAScriptExternal.js',
+    longname: 'BuiltinExternal/ECMAScriptExternal.js~SyntaxError',
+    access: null,
+    description: '',
+    builtinExternal: true },
+  { __docId__: 32,
+    kind: 'external',
+    static: true,
+    variation: null,
+    name: 'TypeError',
+    externalLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError',
+    memberof: 'BuiltinExternal/ECMAScriptExternal.js',
+    longname: 'BuiltinExternal/ECMAScriptExternal.js~TypeError',
+    access: null,
+    description: '',
+    builtinExternal: true },
+  { __docId__: 33,
+    kind: 'external',
+    static: true,
+    variation: null,
+    name: 'URIError',
+    externalLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/URIError',
+    memberof: 'BuiltinExternal/ECMAScriptExternal.js',
+    longname: 'BuiltinExternal/ECMAScriptExternal.js~URIError',
+    access: null,
+    description: '',
+    builtinExternal: true },
+  { __docId__: 34,
+    kind: 'external',
+    static: true,
+    variation: null,
+    name: 'Number',
+    externalLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number',
+    memberof: 'BuiltinExternal/ECMAScriptExternal.js',
+    longname: 'BuiltinExternal/ECMAScriptExternal.js~Number',
+    access: null,
+    description: '',
+    builtinExternal: true },
+  { __docId__: 35,
+    kind: 'external',
+    static: true,
+    variation: null,
+    name: 'number',
+    externalLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number',
+    memberof: 'BuiltinExternal/ECMAScriptExternal.js',
+    longname: 'BuiltinExternal/ECMAScriptExternal.js~number',
+    access: null,
+    description: '',
+    builtinExternal: true },
+  { __docId__: 36,
+    kind: 'external',
+    static: true,
+    variation: null,
+    name: 'Date',
+    externalLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date',
+    memberof: 'BuiltinExternal/ECMAScriptExternal.js',
+    longname: 'BuiltinExternal/ECMAScriptExternal.js~Date',
+    access: null,
+    description: '',
+    builtinExternal: true },
+  { __docId__: 37,
+    kind: 'external',
+    static: true,
+    variation: null,
+    name: 'String',
+    externalLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String',
+    memberof: 'BuiltinExternal/ECMAScriptExternal.js',
+    longname: 'BuiltinExternal/ECMAScriptExternal.js~String',
+    access: null,
+    description: '',
+    builtinExternal: true },
+  { __docId__: 38,
+    kind: 'external',
+    static: true,
+    variation: null,
+    name: 'string',
+    externalLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String',
+    memberof: 'BuiltinExternal/ECMAScriptExternal.js',
+    longname: 'BuiltinExternal/ECMAScriptExternal.js~string',
+    access: null,
+    description: '',
+    builtinExternal: true },
+  { __docId__: 39,
+    kind: 'external',
+    static: true,
+    variation: null,
+    name: 'RegExp',
+    externalLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp',
+    memberof: 'BuiltinExternal/ECMAScriptExternal.js',
+    longname: 'BuiltinExternal/ECMAScriptExternal.js~RegExp',
+    access: null,
+    description: '',
+    builtinExternal: true },
+  { __docId__: 40,
+    kind: 'external',
+    static: true,
+    variation: null,
+    name: 'Array',
+    externalLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array',
+    memberof: 'BuiltinExternal/ECMAScriptExternal.js',
+    longname: 'BuiltinExternal/ECMAScriptExternal.js~Array',
+    access: null,
+    description: '',
+    builtinExternal: true },
+  { __docId__: 41,
+    kind: 'external',
+    static: true,
+    variation: null,
+    name: 'Int8Array',
+    externalLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int8Array',
+    memberof: 'BuiltinExternal/ECMAScriptExternal.js',
+    longname: 'BuiltinExternal/ECMAScriptExternal.js~Int8Array',
+    access: null,
+    description: '',
+    builtinExternal: true },
+  { __docId__: 42,
+    kind: 'external',
+    static: true,
+    variation: null,
+    name: 'Uint8Array',
+    externalLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array',
+    memberof: 'BuiltinExternal/ECMAScriptExternal.js',
+    longname: 'BuiltinExternal/ECMAScriptExternal.js~Uint8Array',
+    access: null,
+    description: '',
+    builtinExternal: true },
+  { __docId__: 43,
+    kind: 'external',
+    static: true,
+    variation: null,
+    name: 'Uint8ClampedArray',
+    externalLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray',
+    memberof: 'BuiltinExternal/ECMAScriptExternal.js',
+    longname: 'BuiltinExternal/ECMAScriptExternal.js~Uint8ClampedArray',
+    access: null,
+    description: '',
+    builtinExternal: true },
+  { __docId__: 44,
+    kind: 'external',
+    static: true,
+    variation: null,
+    name: 'Int16Array',
+    externalLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int16Array',
+    memberof: 'BuiltinExternal/ECMAScriptExternal.js',
+    longname: 'BuiltinExternal/ECMAScriptExternal.js~Int16Array',
+    access: null,
+    description: '',
+    builtinExternal: true },
+  { __docId__: 45,
+    kind: 'external',
+    static: true,
+    variation: null,
+    name: 'Uint16Array',
+    externalLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint16Array',
+    memberof: 'BuiltinExternal/ECMAScriptExternal.js',
+    longname: 'BuiltinExternal/ECMAScriptExternal.js~Uint16Array',
+    access: null,
+    description: '',
+    builtinExternal: true },
+  { __docId__: 46,
+    kind: 'external',
+    static: true,
+    variation: null,
+    name: 'Int32Array',
+    externalLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array',
+    memberof: 'BuiltinExternal/ECMAScriptExternal.js',
+    longname: 'BuiltinExternal/ECMAScriptExternal.js~Int32Array',
+    access: null,
+    description: '',
+    builtinExternal: true },
+  { __docId__: 47,
+    kind: 'external',
+    static: true,
+    variation: null,
+    name: 'Uint32Array',
+    externalLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array',
+    memberof: 'BuiltinExternal/ECMAScriptExternal.js',
+    longname: 'BuiltinExternal/ECMAScriptExternal.js~Uint32Array',
+    access: null,
+    description: '',
+    builtinExternal: true },
+  { __docId__: 48,
+    kind: 'external',
+    static: true,
+    variation: null,
+    name: 'Float32Array',
+    externalLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array',
+    memberof: 'BuiltinExternal/ECMAScriptExternal.js',
+    longname: 'BuiltinExternal/ECMAScriptExternal.js~Float32Array',
+    access: null,
+    description: '',
+    builtinExternal: true },
+  { __docId__: 49,
+    kind: 'external',
+    static: true,
+    variation: null,
+    name: 'Float64Array',
+    externalLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float64Array',
+    memberof: 'BuiltinExternal/ECMAScriptExternal.js',
+    longname: 'BuiltinExternal/ECMAScriptExternal.js~Float64Array',
+    access: null,
+    description: '',
+    builtinExternal: true },
+  { __docId__: 50,
+    kind: 'external',
+    static: true,
+    variation: null,
+    name: 'Map',
+    externalLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map',
+    memberof: 'BuiltinExternal/ECMAScriptExternal.js',
+    longname: 'BuiltinExternal/ECMAScriptExternal.js~Map',
+    access: null,
+    description: '',
+    builtinExternal: true },
+  { __docId__: 51,
+    kind: 'external',
+    static: true,
+    variation: null,
+    name: 'Set',
+    externalLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set',
+    memberof: 'BuiltinExternal/ECMAScriptExternal.js',
+    longname: 'BuiltinExternal/ECMAScriptExternal.js~Set',
+    access: null,
+    description: '',
+    builtinExternal: true },
+  { __docId__: 52,
+    kind: 'external',
+    static: true,
+    variation: null,
+    name: 'WeakMap',
+    externalLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap',
+    memberof: 'BuiltinExternal/ECMAScriptExternal.js',
+    longname: 'BuiltinExternal/ECMAScriptExternal.js~WeakMap',
+    access: null,
+    description: '',
+    builtinExternal: true },
+  { __docId__: 53,
+    kind: 'external',
+    static: true,
+    variation: null,
+    name: 'WeakSet',
+    externalLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet',
+    memberof: 'BuiltinExternal/ECMAScriptExternal.js',
+    longname: 'BuiltinExternal/ECMAScriptExternal.js~WeakSet',
+    access: null,
+    description: '',
+    builtinExternal: true },
+  { __docId__: 54,
+    kind: 'external',
+    static: true,
+    variation: null,
+    name: 'ArrayBuffer',
+    externalLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer',
+    memberof: 'BuiltinExternal/ECMAScriptExternal.js',
+    longname: 'BuiltinExternal/ECMAScriptExternal.js~ArrayBuffer',
+    access: null,
+    description: '',
+    builtinExternal: true },
+  { __docId__: 55,
+    kind: 'external',
+    static: true,
+    variation: null,
+    name: 'DataView',
+    externalLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView',
+    memberof: 'BuiltinExternal/ECMAScriptExternal.js',
+    longname: 'BuiltinExternal/ECMAScriptExternal.js~DataView',
+    access: null,
+    description: '',
+    builtinExternal: true },
+  { __docId__: 56,
+    kind: 'external',
+    static: true,
+    variation: null,
+    name: 'JSON',
+    externalLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON',
+    memberof: 'BuiltinExternal/ECMAScriptExternal.js',
+    longname: 'BuiltinExternal/ECMAScriptExternal.js~JSON',
+    access: null,
+    description: '',
+    builtinExternal: true },
+  { __docId__: 57,
+    kind: 'external',
+    static: true,
+    variation: null,
+    name: 'Promise',
+    externalLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise',
+    memberof: 'BuiltinExternal/ECMAScriptExternal.js',
+    longname: 'BuiltinExternal/ECMAScriptExternal.js~Promise',
+    access: null,
+    description: '',
+    builtinExternal: true },
+  { __docId__: 58,
+    kind: 'external',
+    static: true,
+    variation: null,
+    name: 'Generator',
+    externalLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator',
+    memberof: 'BuiltinExternal/ECMAScriptExternal.js',
+    longname: 'BuiltinExternal/ECMAScriptExternal.js~Generator',
+    access: null,
+    description: '',
+    builtinExternal: true },
+  { __docId__: 59,
+    kind: 'external',
+    static: true,
+    variation: null,
+    name: 'GeneratorFunction',
+    externalLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/GeneratorFunction',
+    memberof: 'BuiltinExternal/ECMAScriptExternal.js',
+    longname: 'BuiltinExternal/ECMAScriptExternal.js~GeneratorFunction',
+    access: null,
+    description: '',
+    builtinExternal: true },
+  { __docId__: 60,
+    kind: 'external',
+    static: true,
+    variation: null,
+    name: 'Reflect',
+    externalLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect',
+    memberof: 'BuiltinExternal/ECMAScriptExternal.js',
+    longname: 'BuiltinExternal/ECMAScriptExternal.js~Reflect',
+    access: null,
+    description: '',
+    builtinExternal: true },
+  { __docId__: 61,
+    kind: 'external',
+    static: true,
+    variation: null,
+    name: 'Proxy',
+    externalLink: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy',
+    memberof: 'BuiltinExternal/ECMAScriptExternal.js',
+    longname: 'BuiltinExternal/ECMAScriptExternal.js~Proxy',
+    access: null,
+    description: '',
+    builtinExternal: true },
+  { __docId__: 63,
+    kind: 'external',
+    static: true,
+    variation: null,
+    name: 'CanvasRenderingContext2D',
+    externalLink: 'https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D',
+    memberof: 'BuiltinExternal/WebAPIExternal.js',
+    longname: 'BuiltinExternal/WebAPIExternal.js~CanvasRenderingContext2D',
+    access: null,
+    description: '',
+    builtinExternal: true },
+  { __docId__: 64,
+    kind: 'external',
+    static: true,
+    variation: null,
+    name: 'DocumentFragment',
+    externalLink: 'https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment',
+    memberof: 'BuiltinExternal/WebAPIExternal.js',
+    longname: 'BuiltinExternal/WebAPIExternal.js~DocumentFragment',
+    access: null,
+    description: '',
+    builtinExternal: true },
+  { __docId__: 65,
+    kind: 'external',
+    static: true,
+    variation: null,
+    name: 'Element',
+    externalLink: 'https://developer.mozilla.org/en-US/docs/Web/API/Element',
+    memberof: 'BuiltinExternal/WebAPIExternal.js',
+    longname: 'BuiltinExternal/WebAPIExternal.js~Element',
+    access: null,
+    description: '',
+    builtinExternal: true },
+  { __docId__: 66,
+    kind: 'external',
+    static: true,
+    variation: null,
+    name: 'Event',
+    externalLink: 'https://developer.mozilla.org/en-US/docs/Web/API/Event',
+    memberof: 'BuiltinExternal/WebAPIExternal.js',
+    longname: 'BuiltinExternal/WebAPIExternal.js~Event',
+    access: null,
+    description: '',
+    builtinExternal: true },
+  { __docId__: 67,
+    kind: 'external',
+    static: true,
+    variation: null,
+    name: 'Node',
+    externalLink: 'https://developer.mozilla.org/en-US/docs/Web/API/Node',
+    memberof: 'BuiltinExternal/WebAPIExternal.js',
+    longname: 'BuiltinExternal/WebAPIExternal.js~Node',
+    access: null,
+    description: '',
+    builtinExternal: true },
+  { __docId__: 68,
+    kind: 'external',
+    static: true,
+    variation: null,
+    name: 'NodeList',
+    externalLink: 'https://developer.mozilla.org/en-US/docs/Web/API/NodeList',
+    memberof: 'BuiltinExternal/WebAPIExternal.js',
+    longname: 'BuiltinExternal/WebAPIExternal.js~NodeList',
+    access: null,
+    description: '',
+    builtinExternal: true },
+  { __docId__: 69,
+    kind: 'external',
+    static: true,
+    variation: null,
+    name: 'XMLHttpRequest',
+    externalLink: 'https://developer.mozilla.org/en/docs/Web/API/XMLHttpRequest',
+    memberof: 'BuiltinExternal/WebAPIExternal.js',
+    longname: 'BuiltinExternal/WebAPIExternal.js~XMLHttpRequest',
+    access: null,
+    description: '',
+    builtinExternal: true },
+  { __docId__: 70,
+    kind: 'external',
+    static: true,
+    variation: null,
+    name: 'AudioContext',
+    externalLink: 'https://developer.mozilla.org/en/docs/Web/API/AudioContext',
+    memberof: 'BuiltinExternal/WebAPIExternal.js',
+    longname: 'BuiltinExternal/WebAPIExternal.js~AudioContext',
+    access: null,
+    description: '',
+    builtinExternal: true } ]
+badge.svg
+identifiers.html
+ ------ onHandleHTML ev.data.html ------ 
+ <!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl">
+  <title data-ice="title">Index | API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="git+https://github.com/helols/so-hello-world.git">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/App.js~App.html">App</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/One.js~One.html">One</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/Two.js~Two.html">Two</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1>References</h1>
+<div data-ice="classSummary"><h2 id="class">Class Summary</h2><table class="summary" data-ice="summary">
+  <thead><tr><td data-ice="title" colspan="3">Static Public Class Summary</td></tr></thead>
+  <tbody>
+  
+  <tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/app/App.js~App.html">App</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/app/One.js~One.html">One</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/app/Two.js~Two.html">Two</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+
+
+
+
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.5)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>
+
+index.html
+ ------ onHandleHTML ev.data.html ------ 
+ <!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl">
+  <title data-ice="title">API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="git+https://github.com/helols/so-hello-world.git">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/App.js~App.html">App</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/One.js~One.html">One</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/Two.js~Two.html">Two</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><h1 id="so-hello-world">so-hello-world</h1>
+<pre><code class="lang-sh"><code class="source-code prettyprint">npm install &amp;&amp; npm run build</code>
+</code></pre>
+</div>
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.5)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>
+
+class/app/App.js~App.html
+ ------ onHandleHTML ev.data.html ------ 
+ <!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">App | API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="git+https://github.com/helols/so-hello-world.git">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/App.js~App.html">App</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/One.js~One.html">One</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/Two.js~Two.html">Two</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><div class="header-notice">
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import App from &apos;<span><a href="file/app/App.js.html#lineNumber4">forkpipe/app/App.js</a></span>&apos;</code></pre></div>
+  <span data-ice="access">public</span>
+  <span data-ice="kind">class</span>
+  
+  
+  
+  <span data-ice="source">| <span><a href="file/app/App.js.html#lineNumber4">source</a></span></span>
+</div>
+
+<div class="self-detail detail">
+  <h1 data-ice="name">App</h1>
+
+  
+
+  
+  
+  <div class="flat-list" data-ice="extendsChain"><h4>Extends:</h4><div><span>react~React.Component</span> &#x2192; App</div></div>
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+</div>
+
+
+
+
+
+<div data-ice="methodSummary"><h2>Method Summary</h2><table class="summary" data-ice="summary">
+  <thead><tr><td data-ice="title" colspan="3">Public Methods</td></tr></thead>
+  <tbody>
+  
+  <tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/app/App.js~App.html#instance-method-render">render</a></span></span><span data-ice="signature">(): <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/app/App.js~App.html#instance-method-somethingElse">somethingElse</a></span></span><span data-ice="signature">()</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+
+
+
+
+
+
+
+<div data-ice="methodDetails"><h2 data-ice="title">Public Methods</h2>
+
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-render">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">render</span><span data-ice="signature">(): <span>*</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/app/App.js.html#lineNumber5">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span>*</span></td>
+        
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-somethingElse">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">somethingElse</span><span data-ice="signature">()</span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/app/App.js.html#lineNumber25">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+</div>
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.5)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>
+
+class/app/One.js~One.html
+ ------ onHandleHTML ev.data.html ------ 
+ <!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">One | API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="git+https://github.com/helols/so-hello-world.git">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/App.js~App.html">App</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/One.js~One.html">One</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/Two.js~Two.html">Two</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><div class="header-notice">
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import One from &apos;<span><a href="file/app/One.js.html#lineNumber4">forkpipe/app/One.js</a></span>&apos;</code></pre></div>
+  <span data-ice="access">public</span>
+  <span data-ice="kind">class</span>
+  
+  
+  
+  <span data-ice="source">| <span><a href="file/app/One.js.html#lineNumber4">source</a></span></span>
+</div>
+
+<div class="self-detail detail">
+  <h1 data-ice="name">One</h1>
+
+  
+
+  
+  
+  <div class="flat-list" data-ice="extendsChain"><h4>Extends:</h4><div><span>react~React.Component</span> &#x2192; One</div></div>
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+</div>
+
+
+
+
+
+<div data-ice="methodSummary"><h2>Method Summary</h2><table class="summary" data-ice="summary">
+  <thead><tr><td data-ice="title" colspan="3">Public Methods</td></tr></thead>
+  <tbody>
+  
+  <tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/app/One.js~One.html#instance-method-render">render</a></span></span><span data-ice="signature">(): <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+
+
+
+
+
+
+
+<div data-ice="methodDetails"><h2 data-ice="title">Public Methods</h2>
+
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-render">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">render</span><span data-ice="signature">(): <span>*</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/app/One.js.html#lineNumber5">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span>*</span></td>
+        
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+</div>
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.5)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>
+
+class/app/Two.js~Two.html
+ ------ onHandleHTML ev.data.html ------ 
+ <!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">Two | API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="git+https://github.com/helols/so-hello-world.git">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/App.js~App.html">App</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/One.js~One.html">One</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/Two.js~Two.html">Two</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><div class="header-notice">
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import Two from &apos;<span><a href="file/app/Two.js.html#lineNumber4">forkpipe/app/Two.js</a></span>&apos;</code></pre></div>
+  <span data-ice="access">public</span>
+  <span data-ice="kind">class</span>
+  
+  
+  
+  <span data-ice="source">| <span><a href="file/app/Two.js.html#lineNumber4">source</a></span></span>
+</div>
+
+<div class="self-detail detail">
+  <h1 data-ice="name">Two</h1>
+
+  
+
+  
+  
+  <div class="flat-list" data-ice="extendsChain"><h4>Extends:</h4><div><span>react~React.Component</span> &#x2192; Two</div></div>
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+</div>
+
+
+
+
+
+<div data-ice="methodSummary"><h2>Method Summary</h2><table class="summary" data-ice="summary">
+  <thead><tr><td data-ice="title" colspan="3">Public Methods</td></tr></thead>
+  <tbody>
+  
+  <tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/app/Two.js~Two.html#instance-method-render">render</a></span></span><span data-ice="signature">(): <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+
+
+
+
+
+
+
+<div data-ice="methodDetails"><h2 data-ice="title">Public Methods</h2>
+
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-render">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">render</span><span data-ice="signature">(): <span>*</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/app/Two.js.html#lineNumber5">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span>*</span></td>
+        
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+</div>
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.5)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>
+
+file/app/App.js.html
+ ------ onHandleHTML ev.data.html ------ 
+ <!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">app/App.js | API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="git+https://github.com/helols/so-hello-world.git">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/App.js~App.html">App</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/One.js~One.html">One</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/Two.js~Two.html">Two</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">app/App.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import React from &apos;react&apos;;
+import { Link } from &apos;react-router&apos;
+
+class App extends React.Component {
+  render() {
+    return (
+        &lt;div&gt;
+        	&lt;h1&gt;Hello World!&lt;/h1&gt;
+            {this.props.children}
+           	&lt;ul role=&quot;nav&quot;&gt;
+	            &lt;li&gt;&lt;Link to=&quot;/one&quot; activeStyle={{ color: &apos;red&apos; }}&gt;One&lt;/Link&gt;&lt;/li&gt;
+	            &lt;li&gt;&lt;Link to=&quot;/one/bar&quot; activeStyle={{ color: &apos;red&apos; }}&gt;One/bar&lt;/Link&gt;&lt;/li&gt;
+	            &lt;li&gt;&lt;Link to=&quot;/two&quot; activeStyle={{ color: &apos;red&apos; }}&gt;Two&lt;/Link&gt;&lt;/li&gt;
+	            &lt;li&gt;&lt;Link to=&quot;/two/bar&quot; activeStyle={{ color: &apos;red&apos; }}&gt;Two/bar&lt;/Link&gt;&lt;/li&gt;
+	        &lt;/ul&gt;
+        &lt;/div&gt;
+    );
+  }
+
+  /**
+   * @ignore
+   */ 
+  something() {}
+
+  somethingElse() {}
+};
+
+/**
+ * protoTypes
+ */
+App.propTypes =  {
+  optionalArray: React.PropTypes.array,
+  optionalBool: React.PropTypes.bool,
+  optionalFunc: React.PropTypes.func,
+  optionalNumber: React.PropTypes.number,
+  optionalObject: React.PropTypes.object,
+  optionalString: React.PropTypes.string
+};
+
+export default App;</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.5)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>
+
+file/app/One.js.html
+ ------ onHandleHTML ev.data.html ------ 
+ <!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">app/One.js | API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="git+https://github.com/helols/so-hello-world.git">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/App.js~App.html">App</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/One.js~One.html">One</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/Two.js~Two.html">Two</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">app/One.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import React from &apos;react&apos;;
+import Intl from &apos;intl&apos;;
+
+class One extends React.Component {
+    render() {
+        const foo = (this.props.params &amp;&amp; this.props.params.foo) ? `(${this.props.params.foo})` : null;
+        return (
+            &lt;div&gt;
+                One { foo }
+            &lt;/div&gt;
+        );
+    }
+};
+
+One.propTypes =  {
+};
+
+export default One;</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.5)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>
+
+file/app/Two.js.html
+ ------ onHandleHTML ev.data.html ------ 
+ <!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">app/Two.js | API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="git+https://github.com/helols/so-hello-world.git">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/App.js~App.html">App</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/One.js~One.html">One</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/Two.js~Two.html">Two</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">app/Two.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import React from &apos;react&apos;;
+import Intl from &apos;intl&apos;;
+
+class Two extends React.Component {
+    render() {
+        const foo = (this.props.params &amp;&amp; this.props.params.foo) ? `(${this.props.params.foo})` : null;
+        return (
+            &lt;div&gt;
+                Two { foo }
+            &lt;/div&gt;
+        );
+    }
+};
+
+Two.propTypes =  {
+};
+
+export default Two;</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.5)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>
+
+file/app/main.js.html
+ ------ onHandleHTML ev.data.html ------ 
+ <!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">app/main.js | API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="git+https://github.com/helols/so-hello-world.git">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/App.js~App.html">App</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/One.js~One.html">One</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/Two.js~Two.html">Two</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">app/main.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import React from &apos;react&apos;;
+import ReactDOM from &apos;react-dom&apos;;
+//import { Router, Route, hashHistory } from &apos;react-router&apos;
+import Router from &apos;react-router/lib/Router&apos;;
+import Route from &apos;react-router/lib/Route&apos;;
+import hashHistory from &apos;react-router/lib/hashHistory&apos;;
+import App from &apos;./App&apos;;
+//import One from &apos;./One&apos;;
+//import Two from &apos;./Two&apos;;
+
+ReactDOM.render(
+    
+    &lt;Router history={hashHistory}&gt;
+        &lt;Route path=&quot;/&quot; component={App}&gt;
+            &lt;Route path=&quot;/one&quot; getComponent={ loadComponentOne }/&gt;
+            &lt;Route path=&quot;/two&quot; getComponent={ loadComponentTwo }/&gt;
+            &lt;Route path=&quot;/one/:foo&quot; getComponent={ loadComponentOne }/&gt;
+            &lt;Route path=&quot;/two/:foo&quot; getComponent={ loadComponentTwo }/&gt;
+        &lt;/Route&gt;
+    &lt;/Router&gt;,
+    document.getElementById(&quot;app&quot;)
+);
+
+function loadComponentOne(location, cb) {
+    require.ensure(
+        [&apos;./One&apos;],
+        (require) =&gt; {
+            const One = require(&apos;./One&apos;);
+            cb(null, One.default);
+        },
+        &apos;One&apos;
+    );
+}
+
+function loadComponentTwo(location, cb) {
+    require.ensure(
+        [&apos;./Two&apos;],
+        (require) =&gt; {
+            const Two = require(&apos;./Two&apos;);
+            cb(null, Two.default);
+        },
+        &apos;Two&apos;
+    );
+}
+
+
+
+//getComponent=
+// require.ensure(dependencies, callback)
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.5)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>
+
+./css
+./script
+./image
+script/search_index.js
+ ------ onHandleHTML ev.data.html ------ 
+ window.esdocSearchIndex = [
+  [
+    "forkpipe/app/app.js~app",
+    "class/app/App.js~App.html",
+    "<span>App</span> <span class=\"search-result-import-path\">forkpipe/app/App.js</span>",
+    "class"
+  ],
+  [
+    "forkpipe/app/one.js~one",
+    "class/app/One.js~One.html",
+    "<span>One</span> <span class=\"search-result-import-path\">forkpipe/app/One.js</span>",
+    "class"
+  ],
+  [
+    "forkpipe/app/two.js~two",
+    "class/app/Two.js~Two.html",
+    "<span>Two</span> <span class=\"search-result-import-path\">forkpipe/app/Two.js</span>",
+    "class"
+  ],
+  [
+    "builtinexternal/ecmascriptexternal.js~array",
+    "external/index.html",
+    "BuiltinExternal/ECMAScriptExternal.js~Array",
+    "external"
+  ],
+  [
+    "builtinexternal/ecmascriptexternal.js~arraybuffer",
+    "external/index.html",
+    "BuiltinExternal/ECMAScriptExternal.js~ArrayBuffer",
+    "external"
+  ],
+  [
+    "builtinexternal/ecmascriptexternal.js~boolean",
+    "external/index.html",
+    "BuiltinExternal/ECMAScriptExternal.js~Boolean",
+    "external"
+  ],
+  [
+    "builtinexternal/ecmascriptexternal.js~dataview",
+    "external/index.html",
+    "BuiltinExternal/ECMAScriptExternal.js~DataView",
+    "external"
+  ],
+  [
+    "builtinexternal/ecmascriptexternal.js~date",
+    "external/index.html",
+    "BuiltinExternal/ECMAScriptExternal.js~Date",
+    "external"
+  ],
+  [
+    "builtinexternal/ecmascriptexternal.js~error",
+    "external/index.html",
+    "BuiltinExternal/ECMAScriptExternal.js~Error",
+    "external"
+  ],
+  [
+    "builtinexternal/ecmascriptexternal.js~evalerror",
+    "external/index.html",
+    "BuiltinExternal/ECMAScriptExternal.js~EvalError",
+    "external"
+  ],
+  [
+    "builtinexternal/ecmascriptexternal.js~float32array",
+    "external/index.html",
+    "BuiltinExternal/ECMAScriptExternal.js~Float32Array",
+    "external"
+  ],
+  [
+    "builtinexternal/ecmascriptexternal.js~float64array",
+    "external/index.html",
+    "BuiltinExternal/ECMAScriptExternal.js~Float64Array",
+    "external"
+  ],
+  [
+    "builtinexternal/ecmascriptexternal.js~function",
+    "external/index.html",
+    "BuiltinExternal/ECMAScriptExternal.js~Function",
+    "external"
+  ],
+  [
+    "builtinexternal/ecmascriptexternal.js~generator",
+    "external/index.html",
+    "BuiltinExternal/ECMAScriptExternal.js~Generator",
+    "external"
+  ],
+  [
+    "builtinexternal/ecmascriptexternal.js~generatorfunction",
+    "external/index.html",
+    "BuiltinExternal/ECMAScriptExternal.js~GeneratorFunction",
+    "external"
+  ],
+  [
+    "builtinexternal/ecmascriptexternal.js~infinity",
+    "external/index.html",
+    "BuiltinExternal/ECMAScriptExternal.js~Infinity",
+    "external"
+  ],
+  [
+    "builtinexternal/ecmascriptexternal.js~int16array",
+    "external/index.html",
+    "BuiltinExternal/ECMAScriptExternal.js~Int16Array",
+    "external"
+  ],
+  [
+    "builtinexternal/ecmascriptexternal.js~int32array",
+    "external/index.html",
+    "BuiltinExternal/ECMAScriptExternal.js~Int32Array",
+    "external"
+  ],
+  [
+    "builtinexternal/ecmascriptexternal.js~int8array",
+    "external/index.html",
+    "BuiltinExternal/ECMAScriptExternal.js~Int8Array",
+    "external"
+  ],
+  [
+    "builtinexternal/ecmascriptexternal.js~internalerror",
+    "external/index.html",
+    "BuiltinExternal/ECMAScriptExternal.js~InternalError",
+    "external"
+  ],
+  [
+    "builtinexternal/ecmascriptexternal.js~json",
+    "external/index.html",
+    "BuiltinExternal/ECMAScriptExternal.js~JSON",
+    "external"
+  ],
+  [
+    "builtinexternal/ecmascriptexternal.js~map",
+    "external/index.html",
+    "BuiltinExternal/ECMAScriptExternal.js~Map",
+    "external"
+  ],
+  [
+    "builtinexternal/ecmascriptexternal.js~nan",
+    "external/index.html",
+    "BuiltinExternal/ECMAScriptExternal.js~NaN",
+    "external"
+  ],
+  [
+    "builtinexternal/ecmascriptexternal.js~number",
+    "external/index.html",
+    "BuiltinExternal/ECMAScriptExternal.js~Number",
+    "external"
+  ],
+  [
+    "builtinexternal/ecmascriptexternal.js~object",
+    "external/index.html",
+    "BuiltinExternal/ECMAScriptExternal.js~Object",
+    "external"
+  ],
+  [
+    "builtinexternal/ecmascriptexternal.js~promise",
+    "external/index.html",
+    "BuiltinExternal/ECMAScriptExternal.js~Promise",
+    "external"
+  ],
+  [
+    "builtinexternal/ecmascriptexternal.js~proxy",
+    "external/index.html",
+    "BuiltinExternal/ECMAScriptExternal.js~Proxy",
+    "external"
+  ],
+  [
+    "builtinexternal/ecmascriptexternal.js~rangeerror",
+    "external/index.html",
+    "BuiltinExternal/ECMAScriptExternal.js~RangeError",
+    "external"
+  ],
+  [
+    "builtinexternal/ecmascriptexternal.js~referenceerror",
+    "external/index.html",
+    "BuiltinExternal/ECMAScriptExternal.js~ReferenceError",
+    "external"
+  ],
+  [
+    "builtinexternal/ecmascriptexternal.js~reflect",
+    "external/index.html",
+    "BuiltinExternal/ECMAScriptExternal.js~Reflect",
+    "external"
+  ],
+  [
+    "builtinexternal/ecmascriptexternal.js~regexp",
+    "external/index.html",
+    "BuiltinExternal/ECMAScriptExternal.js~RegExp",
+    "external"
+  ],
+  [
+    "builtinexternal/ecmascriptexternal.js~set",
+    "external/index.html",
+    "BuiltinExternal/ECMAScriptExternal.js~Set",
+    "external"
+  ],
+  [
+    "builtinexternal/ecmascriptexternal.js~string",
+    "external/index.html",
+    "BuiltinExternal/ECMAScriptExternal.js~String",
+    "external"
+  ],
+  [
+    "builtinexternal/ecmascriptexternal.js~symbol",
+    "external/index.html",
+    "BuiltinExternal/ECMAScriptExternal.js~Symbol",
+    "external"
+  ],
+  [
+    "builtinexternal/ecmascriptexternal.js~syntaxerror",
+    "external/index.html",
+    "BuiltinExternal/ECMAScriptExternal.js~SyntaxError",
+    "external"
+  ],
+  [
+    "builtinexternal/ecmascriptexternal.js~typeerror",
+    "external/index.html",
+    "BuiltinExternal/ECMAScriptExternal.js~TypeError",
+    "external"
+  ],
+  [
+    "builtinexternal/ecmascriptexternal.js~urierror",
+    "external/index.html",
+    "BuiltinExternal/ECMAScriptExternal.js~URIError",
+    "external"
+  ],
+  [
+    "builtinexternal/ecmascriptexternal.js~uint16array",
+    "external/index.html",
+    "BuiltinExternal/ECMAScriptExternal.js~Uint16Array",
+    "external"
+  ],
+  [
+    "builtinexternal/ecmascriptexternal.js~uint32array",
+    "external/index.html",
+    "BuiltinExternal/ECMAScriptExternal.js~Uint32Array",
+    "external"
+  ],
+  [
+    "builtinexternal/ecmascriptexternal.js~uint8array",
+    "external/index.html",
+    "BuiltinExternal/ECMAScriptExternal.js~Uint8Array",
+    "external"
+  ],
+  [
+    "builtinexternal/ecmascriptexternal.js~uint8clampedarray",
+    "external/index.html",
+    "BuiltinExternal/ECMAScriptExternal.js~Uint8ClampedArray",
+    "external"
+  ],
+  [
+    "builtinexternal/ecmascriptexternal.js~weakmap",
+    "external/index.html",
+    "BuiltinExternal/ECMAScriptExternal.js~WeakMap",
+    "external"
+  ],
+  [
+    "builtinexternal/ecmascriptexternal.js~weakset",
+    "external/index.html",
+    "BuiltinExternal/ECMAScriptExternal.js~WeakSet",
+    "external"
+  ],
+  [
+    "builtinexternal/ecmascriptexternal.js~boolean",
+    "external/index.html",
+    "BuiltinExternal/ECMAScriptExternal.js~boolean",
+    "external"
+  ],
+  [
+    "builtinexternal/ecmascriptexternal.js~function",
+    "external/index.html",
+    "BuiltinExternal/ECMAScriptExternal.js~function",
+    "external"
+  ],
+  [
+    "builtinexternal/ecmascriptexternal.js~null",
+    "external/index.html",
+    "BuiltinExternal/ECMAScriptExternal.js~null",
+    "external"
+  ],
+  [
+    "builtinexternal/ecmascriptexternal.js~number",
+    "external/index.html",
+    "BuiltinExternal/ECMAScriptExternal.js~number",
+    "external"
+  ],
+  [
+    "builtinexternal/ecmascriptexternal.js~object",
+    "external/index.html",
+    "BuiltinExternal/ECMAScriptExternal.js~object",
+    "external"
+  ],
+  [
+    "builtinexternal/ecmascriptexternal.js~string",
+    "external/index.html",
+    "BuiltinExternal/ECMAScriptExternal.js~string",
+    "external"
+  ],
+  [
+    "builtinexternal/ecmascriptexternal.js~undefined",
+    "external/index.html",
+    "BuiltinExternal/ECMAScriptExternal.js~undefined",
+    "external"
+  ],
+  [
+    "builtinexternal/webapiexternal.js~audiocontext",
+    "external/index.html",
+    "BuiltinExternal/WebAPIExternal.js~AudioContext",
+    "external"
+  ],
+  [
+    "builtinexternal/webapiexternal.js~canvasrenderingcontext2d",
+    "external/index.html",
+    "BuiltinExternal/WebAPIExternal.js~CanvasRenderingContext2D",
+    "external"
+  ],
+  [
+    "builtinexternal/webapiexternal.js~documentfragment",
+    "external/index.html",
+    "BuiltinExternal/WebAPIExternal.js~DocumentFragment",
+    "external"
+  ],
+  [
+    "builtinexternal/webapiexternal.js~element",
+    "external/index.html",
+    "BuiltinExternal/WebAPIExternal.js~Element",
+    "external"
+  ],
+  [
+    "builtinexternal/webapiexternal.js~event",
+    "external/index.html",
+    "BuiltinExternal/WebAPIExternal.js~Event",
+    "external"
+  ],
+  [
+    "builtinexternal/webapiexternal.js~node",
+    "external/index.html",
+    "BuiltinExternal/WebAPIExternal.js~Node",
+    "external"
+  ],
+  [
+    "builtinexternal/webapiexternal.js~nodelist",
+    "external/index.html",
+    "BuiltinExternal/WebAPIExternal.js~NodeList",
+    "external"
+  ],
+  [
+    "builtinexternal/webapiexternal.js~xmlhttprequest",
+    "external/index.html",
+    "BuiltinExternal/WebAPIExternal.js~XMLHttpRequest",
+    "external"
+  ],
+  [
+    "app/app.js",
+    "file/app/App.js.html",
+    "app/App.js",
+    "file"
+  ],
+  [
+    "app/app.js~app#render",
+    "class/app/App.js~App.html#instance-method-render",
+    "app/App.js~App#render",
+    "method"
+  ],
+  [
+    "app/app.js~app#somethingelse",
+    "class/app/App.js~App.html#instance-method-somethingElse",
+    "app/App.js~App#somethingElse",
+    "method"
+  ],
+  [
+    "app/one.js",
+    "file/app/One.js.html",
+    "app/One.js",
+    "file"
+  ],
+  [
+    "app/one.js~one#render",
+    "class/app/One.js~One.html#instance-method-render",
+    "app/One.js~One#render",
+    "method"
+  ],
+  [
+    "app/two.js",
+    "file/app/Two.js.html",
+    "app/Two.js",
+    "file"
+  ],
+  [
+    "app/two.js~two#render",
+    "class/app/Two.js~Two.html#instance-method-render",
+    "app/Two.js~Two#render",
+    "method"
+  ],
+  [
+    "app/main.js",
+    "file/app/main.js.html",
+    "app/main.js",
+    "file"
+  ]
+]
+source.html
+ ------ onHandleHTML ev.data.html ------ 
+ <!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="">
+  <title data-ice="title">Source | API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="git+https://github.com/helols/so-hello-world.git">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/App.js~App.html">App</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/One.js~One.html">One</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/app/Two.js~Two.html">Two</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1>Source <img data-ice="coverageBadge" src="./badge.svg"><span data-ice="totalCoverageCount" class="total-coverage-count">0/7</span></h1>
+
+<table class="files-summary" data-ice="files" data-use-coverage="true">
+  <thead>
+    <tr>
+      <td>File</td>
+      <td>Identifier</td>
+      <td class="coverage">Document</td>
+      <td style="display: none;">Size</td>
+      <td style="display: none;">Lines</td>
+      <td style="display: none;">Updated</td>
+    </tr>
+  </thead>
+  <tbody>
+    
+  <tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/app/App.js.html#errorLines=25,4,5">app/App.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="class/app/App.js~App.html">App</a></span></td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/3</span></td>
+      <td style="display: none;" data-ice="size">985 byte</td>
+      <td style="display: none;" data-ice="lines">39</td>
+      <td style="display: none;" data-ice="updated">2016-02-02 18:54:47 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/app/One.js.html#errorLines=4,5">app/One.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="class/app/One.js~One.html">One</a></span></td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/2</span></td>
+      <td style="display: none;" data-ice="size">353 byte</td>
+      <td style="display: none;" data-ice="lines">17</td>
+      <td style="display: none;" data-ice="updated">2016-02-02 18:16:27 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/app/Two.js.html#errorLines=4,5">app/Two.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="class/app/Two.js~Two.html">Two</a></span></td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/2</span></td>
+      <td style="display: none;" data-ice="size">353 byte</td>
+      <td style="display: none;" data-ice="lines">17</td>
+      <td style="display: none;" data-ice="updated">2016-02-02 18:16:27 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/app/main.js.html">app/main.js</a></span></td>
+      <td data-ice="identifier" class="identifiers">-</td>
+      <td class="coverage"><span data-ice="coverage">-</span></td>
+      <td style="display: none;" data-ice="size">1286 byte</td>
+      <td style="display: none;" data-ice="lines">49</td>
+      <td style="display: none;" data-ice="updated">2016-02-02 18:16:27 (UTC)</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.5)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>
+
+==================================
+Coverage: 0% (0/7)
+==================================

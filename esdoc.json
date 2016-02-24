@@ -1,0 +1,8 @@
+{
+  "source": "./app",
+  "destination": "./doc",
+  "plugins": [
+    {"name": "esdoc-es7-plugin"},
+    {"name": "./my-plugin.js"}
+  ]
+}
