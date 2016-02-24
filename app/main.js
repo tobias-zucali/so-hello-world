@@ -9,7 +9,6 @@ import App from './App';
 //import Two from './Two';
 
 ReactDOM.render(
-    
     <Router history={hashHistory}>
         <Route path="/" component={App}>
             <Route path="/one" getComponent={ loadComponentOne }/>

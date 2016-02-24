@@ -24,9 +24,11 @@
   },
   "dependencies": {
     "gulp": "^3.9.1",
+    "gulp-util": "^3.0.7",
     "intl": "^1.1.0",
     "react": "^0.14.2",
-    "react-dom": "^0.14.2"
+    "react-dom": "^0.14.2",
+    "webpack": "^1.12.14"
   },
   "repository": {
     "type": "git",
