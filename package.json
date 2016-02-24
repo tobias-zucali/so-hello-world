@@ -23,6 +23,7 @@
     "webpack-dev-server": "^1.12.1"
   },
   "dependencies": {
+    "draft-js": "^0.1.0",
     "gulp": "^3.9.1",
     "gulp-util": "^3.0.7",
     "intl": "^1.1.0",
