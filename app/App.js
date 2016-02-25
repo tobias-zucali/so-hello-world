@@ -1,18 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router'
+import Editor from './Editor';
 
 class App extends React.Component {
   render() {
     return (
         <div>
-        	<h1>Hello World!</h1>
+            <h1>Hello World!</h1>
             {this.props.children}
-           	<ul role="nav">
-	            <li><Link to="/one" activeStyle={{ color: 'red' }}>One</Link></li>
-	            <li><Link to="/one/bar" activeStyle={{ color: 'red' }}>One/bar</Link></li>
-	            <li><Link to="/two" activeStyle={{ color: 'red' }}>Two (with draft.js)</Link></li>
-	            <li><Link to="/two/bar" activeStyle={{ color: 'red' }}>Two/bar</Link></li>
-	        </ul>
+            <ul role="nav">
+                <li><Link to="/one" activeStyle={{ color: 'red' }}>One</Link></li>
+                <li><Link to="/one/bar" activeStyle={{ color: 'red' }}>One/bar</Link></li>
+                <li><Link to="/two" activeStyle={{ color: 'red' }}>Two</Link></li>
+                <li><Link to="/two/bar" activeStyle={{ color: 'red' }}>Two/bar</Link></li>
+            </ul>
+            <h1>Editor</h1>
+            <Editor />
         </div>
     );
   }

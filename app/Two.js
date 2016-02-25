@@ -1,6 +1,5 @@
 import React from 'react';
 import Intl from 'intl';
-import Editor from './Editor';
 
 class Two extends React.Component {
     render() {
@@ -9,7 +8,6 @@ class Two extends React.Component {
         return (
             <div>
                 Two { foo }
-                <Editor />
             </div>
         );
     }
